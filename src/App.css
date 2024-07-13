@@ -1,0 +1,16 @@
+.line {
+  width: 100px;
+  background-color: black;
+  height: 5px;
+}
+
+.active {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: #1abc9c;
+}
+
+.card:hover span {
+  display: flex;
+  background-color: #11e4baa3;
+}
