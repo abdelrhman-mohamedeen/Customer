@@ -14,10 +14,10 @@ const About = ({ onSelectCustomer }) => {
     const fetchData = async () => {
       try {
         const customersResponse = await axios.get(
-          "http://localhost:5000/customers"
+          "https://abdelrhman-mohamedeen.github.io/Customer/db.json/customers"
         );
         const transactionsResponse = await axios.get(
-          "http://localhost:5000/transactions"
+          "https://abdelrhman-mohamedeen.github.io/Customer/db.json/transactions"
         );
         setCustomers(customersResponse.data);
         setTransactions(transactionsResponse.data);
