@@ -13,14 +13,11 @@ const About = ({ onSelectCustomer }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const customersResponse = await axios.get(
-          "https://abdelrhman-mohamedeen.github.io/Customer/db.json/customers"
+        const response = await axios.get(
+          "https://abdelrhman-mohamedeen.github.io/Customer/db.json"
         );
-        const transactionsResponse = await axios.get(
-          "https://abdelrhman-mohamedeen.github.io/Customer/db.json/transactions"
-        );
-        setCustomers(customersResponse.data);
-        setTransactions(transactionsResponse.data);
+        setCustomers(response.data.customers);
+        setTransactions(response.data.transactions);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
