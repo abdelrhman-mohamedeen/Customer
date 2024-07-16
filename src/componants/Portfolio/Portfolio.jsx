@@ -20,10 +20,10 @@ const Portfolio = () => {
     const fetchData = async () => {
       try {
         const customersResponse = await axios.get(
-          "http://localhost:5000/customers"
+          "https://abdelrhman-mohamedeen.github.io/Customer/db.json"
         );
         const transactionsResponse = await axios.get(
-          "http://localhost:5000/transactions"
+          "https://abdelrhman-mohamedeen.github.io/Customer/db.json"
         );
         setCustomers(customersResponse.data);
         setTransactions(transactionsResponse.data);
