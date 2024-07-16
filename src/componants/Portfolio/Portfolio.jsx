@@ -19,14 +19,11 @@ const Portfolio = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const customersResponse = await axios.get(
+        const response = await axios.get(
           "https://abdelrhman-mohamedeen.github.io/Customer/db.json"
         );
-        const transactionsResponse = await axios.get(
-          "https://abdelrhman-mohamedeen.github.io/Customer/db.json"
-        );
-        setCustomers(customersResponse.data);
-        setTransactions(transactionsResponse.data);
+        setCustomers(response.data.customers);
+        setTransactions(response.data.transactions);
         setLoading(false);
 
         setTimeout(() => {
@@ -87,25 +84,45 @@ const Portfolio = () => {
     <div className="min-h-screen bg-gradient-to-r from-teal-400 to-blue-500 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-teal-500 shadow-lg transform -skew-y-12 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-        <div className="relative px-4 py-10  sm:rounded-3xl sm:p-20">
+        <div className="relative px-4 py-10 sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
             <div className="text-center">
               <h1 className="text-3xl font-semibold text-teal-600 mb-4">
                 Customer Portfolio Summary
               </h1>
             </div>
-            <div className=" ml-0 ">
-              <BarChart width={500} height={400} data={customerData}>
-                <CartesianGrid strokeDasharray="0 0" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="totalAmount" fill="black" name="Total Amount" />
+            <div className="ml-0 p-4 bg-white rounded shadow-lg">
+              <h3 className="text-center font-semibold text-lg mb-4">
+                Customer Data Overview
+              </h3>
+              <BarChart
+                width={600}
+                height={400}
+                data={customerData}
+                margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
+                <XAxis dataKey="name" tick={{ fontSize: 12 }} />
+                <YAxis tick={{ fontSize: 12 }} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#f5f5f5",
+                    border: "none",
+                    borderRadius: "5px",
+                  }}
+                />
+                <Legend verticalAlign="top" height={36} />
+                <Bar
+                  dataKey="totalAmount"
+                  fill="#8884d8"
+                  name="Total Amount"
+                  barSize={20}
+                />
                 <Bar
                   dataKey="transactionCount"
-                  fill="teal"
+                  fill="#82ca9d"
                   name="Transaction Count"
+                  barSize={20}
                 />
               </BarChart>
             </div>
